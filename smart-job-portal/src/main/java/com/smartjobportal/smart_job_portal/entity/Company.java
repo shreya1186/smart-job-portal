@@ -1,7 +1,19 @@
 package com.smartjobportal.smart_job_portal.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -27,4 +39,8 @@ public class Company {
     @OneToOne
     @JoinColumn(name="user_id")
     private User user;
+
+    @OneToMany(mappedBy="company",cascade=CascadeType.ALL)
+    private java.util.List<Job>jobs;
 }
+
