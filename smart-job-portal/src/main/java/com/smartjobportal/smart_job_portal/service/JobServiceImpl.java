@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.smartjobportal.smart_job_portal.dto.JobRequest;
@@ -126,5 +129,71 @@ public class JobServiceImpl implements JobService {
                 .orElseThrow(() -> new RuntimeException("Job not found"));
 
         jobRepository.delete(job);
+    }
+
+
+
+    @Override
+    public List<JobResponse> searchByTitle(String title) {
+
+        return jobRepository.findByTitleContainingIgnoreCase(title)
+                .stream()
+                .map(this::mapToResponse)
+                .toList();
+    }
+
+    @Override
+    public List<JobResponse> searchByLocation(String location) {
+
+        return jobRepository.findByLocationContainingIgnoreCase(location)
+                .stream()
+                .map(this::mapToResponse)
+                .toList();
+    }
+
+    @Override
+    public Page<JobResponse> getJobsWithPagination(int page, int size) {
+
+        return jobRepository.findAll(PageRequest.of(page, size))
+                .map(this::mapToResponse);
+    }
+
+    @Override
+    public List<JobResponse> getJobsSortedBySalary() {
+
+        return jobRepository.findAll(
+                Sort.by(Sort.Direction.ASC, "salary"))
+                .stream()
+                .map(this::mapToResponse)
+                .toList();
+    }
+
+    @Override
+    public List<JobResponse> searchByExperience(String experience) {
+        return jobRepository.findByExperienceContainingIgnoreCase(experience)
+                .stream()
+                .map(this::mapToResponse)
+                .toList();
+    }
+
+    @Override
+    public List<JobResponse> searchBySkills(String skills){
+        return jobRepository.findBySkillsContainingIgnoreCase(skills)
+                .stream()
+                .map(this::mapToResponse)
+                .toList();   
+    }
+
+    private JobResponse mapToResponse(Job job) {
+        return new JobResponse(
+                job.getId(),
+                job.getTitle(),
+                job.getDescription(),
+                job.getSalary(),
+                job.getLocation(),
+                job.getExperience(),
+                job.getSkills(),
+                job.getDeadline()
+        );
     }
 }
