@@ -160,7 +160,6 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public List<JobResponse> getJobsSortedBySalary() {
-
         return jobRepository.findAll(
                 Sort.by(Sort.Direction.ASC, "salary"))
                 .stream()
