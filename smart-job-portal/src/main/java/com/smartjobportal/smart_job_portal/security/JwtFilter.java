@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -22,6 +23,9 @@ public class JwtFilter extends OncePerRequestFilter {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    private CustomUserDetailsService customUserDetailsService;
 
     @Override
     protected void doFilterInternal(
@@ -42,12 +46,17 @@ public class JwtFilter extends OncePerRequestFilter {
         if (jwtUtil.isTokenValid(token)) {
 
             String email = jwtUtil.extractEmail(token);
+            System.out.println("Email from JWT: " + email);
+
+            UserDetails userDetails = customUserDetailsService.loadUserByUsername(email);
+            System.out.println("Authorities: " + userDetails.getAuthorities());
 
             UsernamePasswordAuthenticationToken authentication =
-                    new UsernamePasswordAuthenticationToken(
-                            email,
-                            null,
-                            null);
+            new UsernamePasswordAuthenticationToken(
+                    userDetails,
+                    null,
+                    userDetails.getAuthorities());
+
 
             authentication.setDetails(
                     new WebAuthenticationDetailsSource().buildDetails(request));
