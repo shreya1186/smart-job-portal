@@ -1,5 +1,6 @@
 package com.smartjobportal.smart_job_portal.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -23,4 +24,9 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     List<Job> findBySkillsContainingIgnoreCase(String skills);
 
     Page<Job> findAll(Pageable pageable);
+
+
+    long countByCompanyId(Long companyId);
+
+    long countByCompanyIdAndDeadlineGreaterThanEqual(Long companyId, LocalDate date);
 }
