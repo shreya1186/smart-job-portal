@@ -7,6 +7,8 @@ import com.smartjobportal.smart_job_portal.dto.CompanyRequest;
 import com.smartjobportal.smart_job_portal.dto.CompanyResponse;
 import com.smartjobportal.smart_job_portal.entity.Company;
 import com.smartjobportal.smart_job_portal.entity.User;
+import com.smartjobportal.smart_job_portal.exception.CompanyNotFoundException;
+import com.smartjobportal.smart_job_portal.exception.UserNotFoundException;
 import com.smartjobportal.smart_job_portal.repository.CompanyRepository;
 import com.smartjobportal.smart_job_portal.repository.UserRepository;
 
@@ -23,7 +25,7 @@ public class CompanyServiceImpl implements CompanyService{
     public CompanyResponse createOrUpdateCompany(Long userId, CompanyRequest request){
 
         User user = userRepository.findById(userId)
-            .orElseThrow(()->new RuntimeException("User not found"));
+            .orElseThrow(()->new UserNotFoundException("User not found"));
 
         Company company = companyRepository.findByUserId(userId)
             .orElse(new Company()); 
@@ -50,7 +52,7 @@ public class CompanyServiceImpl implements CompanyService{
     public CompanyResponse getCompany(Long userId){
         
         Company company = companyRepository.findByUserId(userId)
-            .orElseThrow(()->new RuntimeException("Company Profile not found"));
+            .orElseThrow(()->new CompanyNotFoundException("Company not found"));
 
         return new CompanyResponse(
             company.getId(),
@@ -65,7 +67,7 @@ public class CompanyServiceImpl implements CompanyService{
     public void deleteCompany(Long userId) {
 
         Company company = companyRepository.findByUserId(userId)
-                .orElseThrow(() -> new RuntimeException("Company profile not found"));
+                .orElseThrow(() -> new CompanyNotFoundException("Company not found"));
 
         companyRepository.delete(company);
     }

@@ -7,6 +7,7 @@ import com.smartjobportal.smart_job_portal.dto.StudentProfileRequest;
 import com.smartjobportal.smart_job_portal.dto.StudentProfileResponse;
 import com.smartjobportal.smart_job_portal.entity.StudentProfile;
 import com.smartjobportal.smart_job_portal.entity.User;
+import com.smartjobportal.smart_job_portal.exception.UserNotFoundException;
 import com.smartjobportal.smart_job_portal.repository.StudentRepository;
 import com.smartjobportal.smart_job_portal.repository.UserRepository;
 
@@ -23,7 +24,7 @@ public class StudentServiceImpl implements StudentService {
     public StudentProfileResponse createOrUpdateProfile(Long userId, StudentProfileRequest request) {
 
         User user = userRepository.findById(userId)
-            .orElseThrow(()->new RuntimeException("User Not Found"));
+            .orElseThrow(()->new UserNotFoundException("User not found"));
 
         StudentProfile profile = studentRepository.findByUser(user)
             .orElse(new StudentProfile());
@@ -61,10 +62,10 @@ public class StudentServiceImpl implements StudentService {
     public StudentProfileResponse getProfile(Long userId) {
 
         User user = userRepository.findById(userId)
-            .orElseThrow(()->new RuntimeException("User Not Found"));
+            .orElseThrow(()->new UserNotFoundException("User not found"));
 
         StudentProfile profile = studentRepository.findByUser(user)
-            .orElseThrow(()->new RuntimeException("Profile Not Found"));
+            .orElseThrow(()->new UserNotFoundException("Student profile not found"));
 
         return new StudentProfileResponse(
             profile.getId(),
@@ -84,10 +85,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void deleteProfile(Long userId) {
         User user = userRepository.findById(userId)
-            .orElseThrow(()->new RuntimeException("User Not Found"));
+            .orElseThrow(()->new UserNotFoundException("User not found"));
 
         StudentProfile profile = studentRepository.findByUser(user)
-            .orElseThrow(()->new RuntimeException("Profile Not Found"));
+            .orElseThrow(()->new UserNotFoundException("Student profile not found"));
 
         studentRepository.delete(profile);    
     }

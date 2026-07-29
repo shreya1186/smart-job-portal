@@ -11,6 +11,8 @@ import com.smartjobportal.smart_job_portal.dto.JobResponse;
 import com.smartjobportal.smart_job_portal.entity.Company;
 import com.smartjobportal.smart_job_portal.entity.Job;
 import com.smartjobportal.smart_job_portal.entity.User;
+import com.smartjobportal.smart_job_portal.exception.CompanyNotFoundException;
+import com.smartjobportal.smart_job_portal.exception.JobNotFoundException;
 import com.smartjobportal.smart_job_portal.repository.ApplicationRepository;
 import com.smartjobportal.smart_job_portal.repository.CompanyRepository;
 import com.smartjobportal.smart_job_portal.repository.JobRepository;
@@ -40,7 +42,7 @@ public class AdminServiceImpl implements AdminService{
     @Override
     public void deleteUser(Long userId){
         User user = userRepository.findById(userId)
-            .orElseThrow(()->new RuntimeException("User Not Found"));
+            .orElseThrow(()->new JobNotFoundException("Job not found"));
 
         userRepository.delete(user);
     }
@@ -61,7 +63,7 @@ public class AdminServiceImpl implements AdminService{
     @Override
     public void deleteCompany(Long companyId){
         Company company = companyRepository.findById(companyId)
-            .orElseThrow(()->new RuntimeException("Company not found"));
+            .orElseThrow(()->new CompanyNotFoundException("Company not found"));
 
         companyRepository.delete(company);    
     }
@@ -85,7 +87,7 @@ public class AdminServiceImpl implements AdminService{
     @Override
     public void deleteJob(Long jobId){
         Job job = jobRepository.findById(jobId)
-            .orElseThrow(()->new RuntimeException("Job Not Found"));
+            .orElseThrow(()->new JobNotFoundException("Job not found"));
         jobRepository.delete(job);    
     }
     

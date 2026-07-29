@@ -13,6 +13,8 @@ import com.smartjobportal.smart_job_portal.dto.JobRequest;
 import com.smartjobportal.smart_job_portal.dto.JobResponse;
 import com.smartjobportal.smart_job_portal.entity.Company;
 import com.smartjobportal.smart_job_portal.entity.Job;
+import com.smartjobportal.smart_job_portal.exception.CompanyNotFoundException;
+import com.smartjobportal.smart_job_portal.exception.JobNotFoundException;
 import com.smartjobportal.smart_job_portal.repository.CompanyRepository;
 import com.smartjobportal.smart_job_portal.repository.JobRepository;
 
@@ -29,7 +31,7 @@ public class JobServiceImpl implements JobService {
     public JobResponse createJob(Long companyId, JobRequest request){
         
         Company company = companyRepository.findById(companyId)
-            .orElseThrow(()->new RuntimeException("Company not found"));
+            .orElseThrow(()->new CompanyNotFoundException("Company not found"));
 
         Job job = new Job();
         
@@ -61,7 +63,7 @@ public class JobServiceImpl implements JobService {
     @Override
     public JobResponse getJobById(Long jobId){
         Job job = jobRepository.findById(jobId)
-            .orElseThrow(()->new RuntimeException("Job not found"));
+            .orElseThrow(()->new JobNotFoundException("Job not found"));
 
         return new JobResponse(
             job.getId(),
@@ -98,7 +100,7 @@ public class JobServiceImpl implements JobService {
     public JobResponse updateJob(Long jobId, JobRequest request) {
 
         Job job = jobRepository.findById(jobId)
-                .orElseThrow(() -> new RuntimeException("Job not found"));
+                .orElseThrow(() -> new JobNotFoundException("Job not found"));
 
         job.setTitle(request.getTitle());
         job.setDescription(request.getDescription());
@@ -126,7 +128,7 @@ public class JobServiceImpl implements JobService {
     public void deleteJob(Long jobId) {
 
         Job job = jobRepository.findById(jobId)
-                .orElseThrow(() -> new RuntimeException("Job not found"));
+                .orElseThrow(() -> new JobNotFoundException("Job not found"));
 
         jobRepository.delete(job);
     }

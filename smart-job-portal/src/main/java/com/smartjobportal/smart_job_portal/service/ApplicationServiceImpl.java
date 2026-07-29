@@ -12,6 +12,9 @@ import com.smartjobportal.smart_job_portal.entity.Application;
 import com.smartjobportal.smart_job_portal.entity.ApplicationStatus;
 import com.smartjobportal.smart_job_portal.entity.Job;
 import com.smartjobportal.smart_job_portal.entity.StudentProfile;
+import com.smartjobportal.smart_job_portal.exception.ApplicationNotFoundException;
+import com.smartjobportal.smart_job_portal.exception.JobNotFoundException;
+import com.smartjobportal.smart_job_portal.exception.UserNotFoundException;
 import com.smartjobportal.smart_job_portal.repository.ApplicationRepository;
 import com.smartjobportal.smart_job_portal.repository.JobRepository;
 import com.smartjobportal.smart_job_portal.repository.StudentRepository;
@@ -33,10 +36,10 @@ public class ApplicationServiceImpl implements ApplicationService {
     public ApplicationResponse applyJob(ApplicationRequest request){
         
         StudentProfile student = studentRepository.findById(request.getStudentId())
-            .orElseThrow(()->new RuntimeException("Student Not Found"));
+            .orElseThrow(()->new UserNotFoundException("Student not found"));
            
         Job job = jobRepository.findById(request.getJobId())
-            .orElseThrow(()->new RuntimeException("Job not found"));
+            .orElseThrow(()->new JobNotFoundException("Job not found"));
             
         if(applicationRepository.findByStudentIdAndJobId(request.getStudentId(),request.getJobId()).isPresent()){
             throw new RuntimeException("You have already applied for this job");
@@ -67,7 +70,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public ApplicationResponse updateApplicationStatus(Long applicationId, ApplicationStatus status){
         Application application = applicationRepository.findById(applicationId)
-            .orElseThrow(()->new RuntimeException("Application not found"));
+            .orElseThrow(()->new ApplicationNotFoundException("Application not found"));
 
         application.setStatus(status);
         Application savedApplication = applicationRepository.save(application);
@@ -77,7 +80,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public void deleteApplication(Long applicationId){
         Application application = applicationRepository.findById(applicationId)
-            .orElseThrow(()->new RuntimeException("Application not found"));
+            .orElseThrow(()->new ApplicationNotFoundException("Application not found"));
 
         applicationRepository.delete(application);
     }

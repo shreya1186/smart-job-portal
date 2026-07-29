@@ -2,10 +2,14 @@ package com.smartjobportal.smart_job_portal.dto;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Column;
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import jakarta.validation.constraints.Positive;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -19,7 +23,8 @@ public class JobRequest {
     @NotBlank(message="description is required")
     private String description;
 
-    @NotNull(message="salary is required")
+    @Positive(message = "Salary must be greater than 0")
+    @NotNull(message = "Salary is required")
     private Double salary;
 
     @NotBlank(message="location is required")
@@ -31,6 +36,7 @@ public class JobRequest {
     @NotBlank(message="skills is required")
     private String skills;
 
-    @NotNull(message="deadline is required")
+    @FutureOrPresent(message = "Deadline must be today or a future date")
+    @NotNull(message = "Deadline is required")
     private LocalDate deadline;
 }

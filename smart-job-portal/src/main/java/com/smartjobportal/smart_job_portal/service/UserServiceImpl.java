@@ -8,6 +8,7 @@ import com.smartjobportal.smart_job_portal.dto.AuthResponse;
 import com.smartjobportal.smart_job_portal.dto.LoginRequest;
 import com.smartjobportal.smart_job_portal.dto.RegisterRequest;
 import com.smartjobportal.smart_job_portal.entity.User;
+import com.smartjobportal.smart_job_portal.exception.DuplicateEmailException;
 import com.smartjobportal.smart_job_portal.repository.UserRepository;
 import com.smartjobportal.smart_job_portal.util.JwtUtil;
 
@@ -26,7 +27,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public String register(RegisterRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email already exists");
+            throw new DuplicateEmailException("Email already exists");
         }
 
         User user = new User();
