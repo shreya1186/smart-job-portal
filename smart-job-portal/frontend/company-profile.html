@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Company Profile</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+</head>
+
+<body>
+
+<header class="dashboard-header">
+
+    <div class="container dashboard-nav">
+
+        <h2>🏢 Company Profile</h2>
+
+        <div>
+
+            <button id="theme-btn" class="btn btn-outline">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <a href="company.html" class="btn btn-outline">
+                Dashboard
+            </a>
+        </div>
+        
+
+    </div>
+
+</header>
+
+<section class="dashboard">
+
+<div class="container">
+<form id="companyProfileForm" class="dashboard-form">
+
+    <div class="dashboard-card">
+
+        <h2>Company Information</h2><br>
+
+        <div class="form-group">
+
+            <label>Company Name</label>
+
+            <input
+                type="text"
+                id="companyName"
+                placeholder="Enter Company Name"
+                required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Website</label>
+
+            <input
+                type="text"
+                id="website"
+                placeholder="https://example.com">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Location</label>
+
+            <input
+                type="text"
+                id="location"
+                placeholder="Ahmedabad, Gujarat">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Company Description</label>
+
+            <textarea
+                id="description"
+                rows="6"
+                placeholder="Tell students about your company, culture, technologies, and hiring process..."></textarea>
+
+        </div>
+
+        <button
+            class="btn btn-primary"
+            type="submit">
+
+            <i class="fa-solid fa-floppy-disk"></i>
+            Save Profile
+
+        </button>
+
+    </div>
+
+</form>
+
+</div>
+
+</section>
+
+<script src="js/theme.js"></script>
+<script src="js/api.js"></script>
+<script src="js/company-profile.js"></script>
+
+</body>
+</html>

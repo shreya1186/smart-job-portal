@@ -1,0 +1,590 @@
+/* ===========================
+            HEADER
+=========================== */
+
+header{
+
+    position:sticky;
+
+    top:0;
+
+    background:rgba(255,255,255,.8);
+
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid var(--border);
+
+    z-index:1000;
+
+}
+
+body.dark header{
+
+    background:rgba(15,23,42,.85);
+
+}
+
+
+/* ===========================
+            NAVBAR
+=========================== */
+
+nav{
+
+    height:80px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.logo{
+
+    color:var(--primary);
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+.logo i{
+
+    margin-right:8px;
+
+}
+
+.nav-links{
+
+    display:flex;
+
+    gap:35px;
+
+}
+
+.nav-links a{
+
+    color:var(--text);
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+    color:var(--primary);
+
+}
+
+.nav-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+/* ===========================
+            HERO
+=========================== */
+
+.hero{
+
+    min-height:90vh;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.hero-container{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.hero-content{
+
+    width:55%;
+
+}
+
+.badge{
+
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    background:#DBEAFE;
+
+    color:var(--primary);
+
+    margin-bottom:25px;
+
+    font-weight:600;
+
+}
+
+.hero-content h1{
+
+    font-size:64px;
+
+    line-height:1.15;
+
+}
+
+.hero-content h1 span{
+
+    color:var(--primary);
+
+}
+
+.hero-content p{
+
+    margin:30px 0;
+
+    color:var(--light-text);
+
+    line-height:1.8;
+
+    font-size:18px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+.hero-image{
+
+    width:40%;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.hero-circle{
+
+    width:370px;
+
+    height:370px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#2563EB,#06B6D4);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:0 20px 50px rgba(37,99,235,.35);
+
+}
+
+.hero-circle i{
+
+    font-size:170px;
+
+    color:white;
+
+}
+
+/* ===========================
+        SECTION TITLE
+=========================== */
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+}
+
+.section-title h2{
+
+    font-size:40px;
+
+}
+
+.section-title p{
+
+    color:var(--light-text);
+
+    margin-top:15px;
+
+}
+
+
+
+/* ===========================
+        STATS
+=========================== */
+
+.stats{
+
+    padding:80px 0;
+
+}
+
+.stats-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+}
+
+.stat-card{
+
+    background:var(--surface);
+
+    border-radius:18px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+}
+
+.stat-card h2{
+
+    color:var(--primary);
+
+    font-size:38px;
+
+}
+
+.stat-card p{
+
+    margin-top:10px;
+
+    color:var(--light-text);
+
+}
+
+
+
+/* ===========================
+        FEATURES
+=========================== */
+
+.features{
+
+    padding:90px 0;
+
+}
+
+.feature-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+}
+
+.feature-card{
+
+    background:var(--surface);
+
+    padding:35px;
+
+    border-radius:18px;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+    text-align:center;
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.feature-card i{
+
+    font-size:42px;
+
+    color:var(--primary);
+
+    margin-bottom:25px;
+
+}
+
+.feature-card h3{
+
+    margin-bottom:15px;
+
+}
+
+.feature-card p{
+
+    color:var(--light-text);
+
+    line-height:1.8;
+
+}
+
+
+/* ////////// */
+/* ===========================
+        LATEST JOBS
+=========================== */
+
+.latest-jobs{
+
+    padding:90px 0;
+
+}
+
+.job-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+.job-card{
+
+    background:var(--surface);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+    border:1px solid transparent;
+
+}
+
+.job-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:var(--primary);
+
+}
+
+.company-logo{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:18px;
+
+    background:#DBEAFE;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:25px;
+
+}
+
+.company-logo i{
+
+    font-size:34px;
+
+    color:var(--primary);
+
+}
+
+.job-card h3{
+
+    margin-bottom:10px;
+
+}
+
+.job-card span{
+
+    color:var(--light-text);
+
+    display:block;
+
+    margin-bottom:25px;
+
+}
+
+.job-info{
+
+    margin-bottom:30px;
+
+}
+
+.job-info p{
+
+    margin:12px 0;
+
+    color:var(--light-text);
+
+}
+
+.job-info i{
+
+    color:var(--primary);
+
+    width:22px;
+
+}
+
+
+/* ===========================
+            FOOTER
+=========================== */
+
+footer{
+
+    background:var(--surface);
+
+    border-top:1px solid var(--border);
+
+    margin-top:100px;
+
+}
+
+.footer-container{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr;
+
+    gap:60px;
+
+    padding:70px 0;
+
+}
+
+.footer-about h2{
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+.footer-about p{
+
+    color:var(--light-text);
+
+    line-height:1.8;
+
+}
+
+.footer-links{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.footer-links h3{
+
+    margin-bottom:20px;
+
+}
+
+.footer-links a{
+
+    margin:8px 0;
+
+    color:var(--light-text);
+
+}
+
+.footer-links a:hover{
+
+    color:var(--primary);
+
+}
+
+.social-icons{
+
+    margin-top:20px;
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.social-icons a{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.social-icons a:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.copyright{
+
+    text-align:center;
+
+    border-top:1px solid var(--border);
+
+    padding:20px;
+
+    color:var(--light-text);
+
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Student Dashboard</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/dashboard.css">
+
+    </head>
+
+    <body>
+
+        <header class="dashboard-header">
+
+            <div class="container dashboard-nav">
+
+                <h2>🎓 Student Dashboard</h2>
+
+                <div>
+
+                    <button id="theme-btn">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+
+                    <a href="profile.html" class="btn btn-primary" id="profileBtn">
+                        Complete Profile
+                    </a>
+
+                    <button class="btn btn-outline" id="logoutBtn">
+
+                        Logout
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="dashboard">
+
+            <div class="container">
+
+                <div class="cards">
+
+                    <div class="dashboard-card">
+
+                        <h3>Total Applications</h3>
+
+                        <h1 id="totalApplications">0</h1>
+
+                    </div>
+
+                    <div class="dashboard-card">
+
+                        <h3>Selected</h3>
+
+                        <h1 id="selectedJobs">0</h1>
+
+                    </div>
+
+                    <div class="dashboard-card">
+
+                        <h3>Rejected</h3>
+
+                        <h1 id="rejectedJobs">0</h1>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <div class="dashboard-grid" style="margin-top:40px;">
+
+            <div class="dashboard-card">
+                <h3>💼 Browse Jobs</h3>
+                <p>View all available jobs.</p>
+                <br>
+                <a href="jobs.html" class="btn btn-primary">Browse Jobs</a>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>📄 My Applications</h3>
+                <p>Track your job applications.</p>
+                <br>
+                <a href="applications.html" class="btn btn-primary">View Applications</a>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>👤 My Profile</h3>
+                <p>Update your student profile.</p>
+                <br>
+                <a href="profile.html" class="btn btn-primary">Profile</a>
+            </div>
+
+        </div>
+
+        <script src="js/theme.js"></script>
+        <script src="js/api.js"></script>
+        <script src="js/auth.js"></script>
+        <script src="js/student.js"></script>
+
+    </body>
+
+</html>

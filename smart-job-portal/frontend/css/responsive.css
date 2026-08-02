@@ -1,0 +1,144 @@
+/* ===========================
+        TABLET
+=========================== */
+
+@media (max-width:992px){
+
+    .hero-container{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        gap:60px;
+
+    }
+
+    .hero-content{
+
+        width:100%;
+
+    }
+
+    .hero-image{
+
+        width:100%;
+
+    }
+
+    .hero-buttons{
+
+        justify-content:center;
+
+    }
+
+    .hero-content h1{
+
+        font-size:48px;
+
+    }
+
+}
+
+
+/* ===========================
+        MOBILE
+=========================== */
+
+@media (max-width:768px){
+
+    nav{
+
+        flex-direction:column;
+
+        height:auto;
+
+        padding:20px 0;
+
+        gap:20px;
+
+    }
+
+    .nav-links{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:20px;
+
+    }
+
+    .nav-actions{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+    }
+
+    .hero{
+
+        padding:70px 0;
+
+    }
+
+    .hero-content h1{
+
+        font-size:38px;
+
+    }
+
+    .hero-content p{
+
+        font-size:16px;
+
+    }
+
+    .hero-circle{
+
+        width:260px;
+        height:260px;
+
+    }
+
+    .hero-circle i{
+
+        font-size:120px;
+
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .btn{
+
+        width:100%;
+
+    }
+
+}
+
+
+/* ===========================
+        SMALL MOBILE
+=========================== */
+
+@media(max-width:480px){
+
+    .hero-content h1{
+
+        font-size:32px;
+
+    }
+
+    .badge{
+
+        font-size:14px;
+
+    }
+
+}

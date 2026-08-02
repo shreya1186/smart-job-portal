@@ -9,6 +9,7 @@ import com.smartjobportal.smart_job_portal.dto.LoginRequest;
 import com.smartjobportal.smart_job_portal.dto.RegisterRequest;
 import com.smartjobportal.smart_job_portal.entity.User;
 import com.smartjobportal.smart_job_portal.exception.DuplicateEmailException;
+import com.smartjobportal.smart_job_portal.exception.InvalidCredentialsException;
 import com.smartjobportal.smart_job_portal.repository.UserRepository;
 import com.smartjobportal.smart_job_portal.util.JwtUtil;
 
@@ -43,14 +44,19 @@ public class UserServiceImpl implements UserService{
     @Override
     public AuthResponse login(LoginRequest request) {
         User user = userRepository.findByEmail(request.getEmail())
-         .orElseThrow(()->new RuntimeException("Invalid Email"));
+         .orElseThrow(()->new InvalidCredentialsException("Invalid Email"));
 
         if(!passwordEncoder.matches(request.getPassword(), user.getPassword())){
-            throw new RuntimeException("Invallid Password");
+            throw new InvalidCredentialsException("Invalid Email");
         } 
 
         String token = jwtUtil.generateToken(user.getEmail());
-        return new AuthResponse(token, "Login Successful");
+        return new AuthResponse(
+                user.getId(),
+                token,
+                user.getRole().name(),
+                "Login Successful"
+        );
     }    
     
 }

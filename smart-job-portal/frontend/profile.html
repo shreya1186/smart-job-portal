@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Profile</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <header class="dashboard-header">
+
+        <div class="container dashboard-nav">
+
+            <h2>👤 Student Profile</h2>
+
+            <div>
+
+                <button id="theme-btn">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <a href="student-profile.html"
+                class="btn btn-primary">
+                    Edit Profile
+                </a>
+
+                <a href="student.html"
+                   class="btn btn-outline">
+
+                    Dashboard
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <section class="dashboard">
+
+        <div class="container">
+
+            <div class="dashboard-card">
+
+                <div id="noProfileMessage"
+                     style="display:none; text-align:center;">
+
+                    <h2>⚠ Profile Not Found</h2>
+
+                    <br>
+
+                    <p>
+                        You haven't completed your profile yet.
+                    </p>
+
+                    <br>
+
+                    <a href="student-profile.html"
+                    class="btn btn-primary">
+                        Complete Profile
+                    </a>
+
+                    <br><br>
+
+                </div>
+
+                <div id="profileContent">
+
+                    <h2>Student Profile</h2>
+
+                    <br>
+
+                    <p id="studentCollege"></p>
+
+                    <br>
+
+                    <p id="studentDegree"></p>
+
+                    <br>
+
+                    <p id="studentBranch"></p>
+
+                    <br>
+
+                    <p id="studentSkills"></p>
+
+                    <br>
+
+                    <p id="studentPhone"></p>
+
+                    <br>
+
+                    <p id="studentGithub"></p>
+
+                    <br>
+
+                    <p id="studentLinkedin"></p>
+
+                    <br>
+
+                    <p id="studentAddress"></p>
+
+                    <br>
+
+                    <p id="studentAbout"></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="js/theme.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/profile.js"></script>
+
+</body>
+
+</html>

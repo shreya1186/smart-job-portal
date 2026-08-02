@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Profile</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<header class="dashboard-header">
+
+    <div class="container dashboard-nav">
+
+        <h2>🎓 Student Profile</h2>
+
+        <div>
+
+            <button id="theme-btn" class="btn btn-outline">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <a href="student.html" class="btn btn-outline">
+                Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+<section class="dashboard">
+
+    <div class="container">
+
+        <form id="studentProfileForm" class="dashboard-form">
+
+            <div class="dashboard-card">
+
+                <h2>Student Information</h2>
+
+                <div class="form-group">
+
+                    <label>College</label>
+
+                    <input
+                        type="text"
+                        id="college"
+                        placeholder="Enter College Name"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Degree</label>
+
+                    <input
+                        type="text"
+                        id="degree"
+                        placeholder="B.E / B.Tech"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Branch</label>
+
+                    <input
+                        type="text"
+                        id="branch"
+                        placeholder="Information Technology"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Skills</label>
+
+                    <input
+                        type="text"
+                        id="skills"
+                        placeholder="Java, Spring Boot, SQL..."
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Phone Number</label>
+
+                    <input
+                        type="text"
+                        id="phone"
+                        placeholder="+91 9876543210"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>GitHub Profile</label>
+
+                    <input
+                        type="text"
+                        id="github"
+                        placeholder="https://github.com/username">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>LinkedIn Profile</label>
+
+                    <input
+                        type="text"
+                        id="linkedin"
+                        placeholder="https://linkedin.com/in/username">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Address</label>
+
+                    <textarea
+                        id="address"
+                        rows="3"
+                        placeholder="Enter your address"></textarea>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>About Yourself</label>
+
+                    <textarea
+                        id="about"
+                        rows="5"
+                        placeholder="Write a short introduction about yourself..."></textarea>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary">
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Save Profile
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+<script src="js/theme.js"></script>
+<script src="js/api.js"></script>
+<script src="js/student-profile.js"></script>
+
+</body>
+</html>
