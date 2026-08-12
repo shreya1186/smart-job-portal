@@ -8,7 +8,7 @@
         <meta name="viewport"
             content="width=device-width, initial-scale=1.0">
 
-        <title>Job Details</title>
+        <title>Manage Jobs</title>
 
         <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/dashboard.css">
@@ -24,7 +24,7 @@
 
             <div class="container dashboard-nav">
 
-                <h2>💼 Job Details</h2>
+                <h2>💼 Manage Jobs</h2>
 
                 <div>
 
@@ -32,11 +32,8 @@
                         <i class="fa-solid fa-moon"></i>
                     </button>
 
-                    <a href="jobs.html"
-                    class="btn btn-outline">
-
-                        Back
-
+                    <a href="admin.html" class="btn btn-outline">
+                        Dashboard
                     </a>
 
                 </div>
@@ -51,41 +48,28 @@
 
                 <div class="dashboard-card">
 
-                    <h2 id="title"></h2>
+                    <table class="table">
 
-                    <br>
+                        <thead>
 
-                    <p id="location"></p>
+                            <tr>
 
-                    <br>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Location</th>
+                                <th>Salary</th>
+                                <th>Deadline</th>
+                                <th>Action</th>
 
-                    <p id="experience"></p>
+                            </tr>
 
-                    <br>
+                        </thead>
 
-                    <p id="skills"></p>
+                        <tbody id="jobsTable">
 
-                    <br>
+                        </tbody>
 
-                    <p id="salary"></p>
-
-                    <br>
-
-                    <p id="deadline"></p>
-
-                    <br>
-
-                    <p id="description"></p>
-
-                    <br>
-
-                    <button
-                        class="btn btn-primary"
-                        id="applyBtn">
-
-                        Apply Now
-
-                    </button>
+                    </table>
 
                 </div>
 
@@ -95,7 +79,7 @@
 
         <script src="js/theme.js"></script>
         <script src="js/api.js"></script>
-        <script src="js/job-details.js"></script>
+        <script src="js/admin-jobs.js"></script>
 
     </body>
 

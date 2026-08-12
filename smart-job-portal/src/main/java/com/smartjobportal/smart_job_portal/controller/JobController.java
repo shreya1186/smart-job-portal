@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.smartjobportal.smart_job_portal.dto.JobRequest;
 import com.smartjobportal.smart_job_portal.dto.JobResponse;
+import com.smartjobportal.smart_job_portal.dto.StudentJobResponse;
 import com.smartjobportal.smart_job_portal.service.JobService;
 
 import jakarta.validation.Valid;
@@ -46,7 +47,20 @@ public class JobController {
     public List<JobResponse> getAllJobs(){
         return jobService.getAllJobs();
     }
+
+    @GetMapping("/student/jobs")
+    public List<StudentJobResponse> getAllJobsForStudents() {
+        return jobService.getAllJobsForStudents();
+    }
     
+    @GetMapping("/company/{companyId}")
+    public List<JobResponse> getJobsByCompany(@PathVariable Long companyId){
+        System.out.println("========== CONTROLLER HIT ==========");
+        System.out.println("Company ID : " + companyId);
+
+        return jobService.getJobsByCompany(companyId);
+    }
+
     @PutMapping("/{jobId}")
     public JobResponse updateJob(@PathVariable Long jobId,@RequestBody @Valid JobRequest request){
         return jobService.updateJob(jobId, request);
@@ -59,27 +73,27 @@ public class JobController {
     }
 
     @GetMapping("/search/title")
-    public List<JobResponse> searchByTitle(@RequestParam String title){
+    public List<StudentJobResponse> searchByTitle(@RequestParam String title){
         return jobService.searchByTitle(title);
     }
 
     @GetMapping("/search/location")
-    public List<JobResponse> searchByLocation(@RequestParam String location){
+    public List<StudentJobResponse> searchByLocation(@RequestParam String location){
         return jobService.searchByLocation(location);
     }
 
     @GetMapping("search/experience")
-    public List<JobResponse> searchByExperience(@RequestParam String experience){
+    public List<StudentJobResponse> searchByExperience(@RequestParam String experience){
         return jobService.searchByExperience(experience);
     }
 
     @GetMapping("/search/skills")
-    public List<JobResponse> searchBySkills(@RequestParam String skills){
+    public List<StudentJobResponse> searchBySkills(@RequestParam String skills){
         return jobService.searchBySkills(skills);
     }
 
     @GetMapping("/page")
-    public Page<JobResponse> getJobsWithPagination(
+    public Page<StudentJobResponse> getJobsWithPagination(
         @RequestParam int page,
         @RequestParam int size
     ){

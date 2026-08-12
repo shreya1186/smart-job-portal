@@ -29,8 +29,11 @@ public class AdminController {
 
     @DeleteMapping("/user/{id}")
     public String deleteUser(@PathVariable Long id){
+
+        System.out.println("Inside AdminController.deleteUser()");
         adminService.deleteUser(id);
         return "User Deleted successfully";
+
     }
 
     @GetMapping("/companies")
@@ -51,6 +54,7 @@ public class AdminController {
 
     @DeleteMapping("/job/{id}")
     public String deleteJob(@PathVariable Long id){
+        System.out.println("Inside AdminController.deleteJob()");
         adminService.deleteJob(id);
         return "Job Deleted Successfully";
     }
@@ -58,5 +62,14 @@ public class AdminController {
     @GetMapping("/applications")
     public List<ApplicationResponse> getAllApplications() {
         return adminService.getAllApplications();
+    }
+
+    @DeleteMapping("/application/{id}")
+    public String deleteApplication(@PathVariable Long id) {
+
+        adminService.deleteApplication(id);
+
+        return "Application Deleted Successfully";
+
     }
 }

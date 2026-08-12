@@ -20,4 +20,6 @@ public interface ApplicationRepository extends JpaRepository<Application, Long>{
 
     // count applications received for all jobs posted by a company.
     long countByJobCompanyId(Long companyId);
+
+    List<Application> findByJobId(Long jobId);
 }

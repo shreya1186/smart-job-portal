@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 
 import com.smartjobportal.smart_job_portal.dto.JobRequest;
 import com.smartjobportal.smart_job_portal.dto.JobResponse;
+import com.smartjobportal.smart_job_portal.dto.StudentJobResponse;
 
 public interface JobService {
 
@@ -13,23 +14,27 @@ public interface JobService {
 
     JobResponse getJobById(Long jobId);
 
+    List<JobResponse> getJobsByCompany(Long companyId);
+
     List<JobResponse> getAllJobs();
 
     JobResponse updateJob(Long jobId, JobRequest request);
 
     void deleteJob(Long jobId);
 
+    List<StudentJobResponse> getAllJobsForStudents();
+
     
-    List<JobResponse> searchByTitle(String title);
+    List<StudentJobResponse> searchByTitle(String title);
 
-    List<JobResponse> searchByLocation(String location);
+    List<StudentJobResponse> searchByLocation(String location);
 
-    Page<JobResponse> getJobsWithPagination(int page, int size);
+    Page<StudentJobResponse> getJobsWithPagination(int page, int size);
 
     List<JobResponse> getJobsSortedBySalary();
 
-    List<JobResponse> searchByExperience(String experience);
+    List<StudentJobResponse> searchByExperience(String experience);
 
-    List<JobResponse> searchBySkills(String skills);
+    List<StudentJobResponse> searchBySkills(String skills);
 }
 

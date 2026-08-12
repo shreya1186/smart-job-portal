@@ -2,6 +2,87 @@ const params = new URLSearchParams(window.location.search);
 
 const jobId = params.get("jobId");
 
+function getActionButtons(application) {
+
+    switch (application.status) {
+
+        case "APPLIED":
+            return `
+                <button
+                    class="btn btn-primary"
+                    onclick="updateStatus(${application.id}, 'UNDER_REVIEW')">
+
+                    📄 Under Review
+
+                </button>
+
+                <button
+                    class="btn btn-danger"
+                    onclick="updateStatus(${application.id}, 'REJECTED')">
+
+                    ❌ Reject
+
+                </button>
+            `;
+
+        case "UNDER_REVIEW":
+            return `
+                <button
+                    class="btn btn-primary"
+                    onclick="updateStatus(${application.id}, 'INTERVIEW')">
+
+                    🎤 Interview
+
+                </button>
+
+                <button
+                    class="btn btn-danger"
+                    onclick="updateStatus(${application.id}, 'REJECTED')">
+
+                    ❌ Reject
+
+                </button>
+            `;
+
+        case "INTERVIEW":
+            return `
+                <button
+                    class="btn btn-primary"
+                    onclick="updateStatus(${application.id}, 'SELECTED')">
+
+                    ✅ Select
+
+                </button>
+
+                <button
+                    class="btn btn-danger"
+                    onclick="updateStatus(${application.id}, 'REJECTED')">
+
+                    ❌ Reject
+
+                </button>
+            `;
+
+        case "SELECTED":
+            return `
+                <span class="status-selected">
+                    🎉 Candidate Selected
+                </span>
+            `;
+
+        case "REJECTED":
+            return `
+                <span class="status-rejected">
+                    ❌ Candidate Rejected
+                </span>
+            `;
+
+        default:
+            return "";
+    }
+
+}
+
 async function loadApplications() {
 
     try {
@@ -11,10 +92,14 @@ async function loadApplications() {
             API.companyApplications + "/" + jobId,
 
             {
+
                 headers: {
+
                     "Authorization":
                     "Bearer " + localStorage.getItem("token")
+
                 }
+
             }
 
         );
@@ -24,6 +109,7 @@ async function loadApplications() {
             alert("Unable to load applications");
 
             return;
+
         }
 
         const applications = await response.json();
@@ -33,45 +119,53 @@ async function loadApplications() {
 
         container.innerHTML = "";
 
-                if (applications.length === 0) {
+        if (applications.length === 0) {
 
             container.innerHTML = `
+
                 <div class="dashboard-card" style="text-align:center;">
-                    <h2>📭 No Applications Received</h2>
-                    <p>No students have applied for this job yet.</p>
+
+                    <h2>📭 No Applications Yet</h2>
+
+                    <p>No student has applied for this job.</p>
+
                 </div>
+
             `;
 
             return;
+
         }
 
-        applications.forEach(app => {
+        applications.forEach(application => {
 
             container.innerHTML += `
 
-            <div class="dashboard-card">
+                <div class="job-card">
 
-                <h2>${app.studentName}</h2>
+                    <h3>${application.studentName}</h3>
 
-                <p><b>Email:</b> ${app.studentEmail}</p>
+                    <p><b>Job:</b> ${application.jobTitle}</p>
 
-                <p><b>Status:</b> ${app.status}</p>
+                    <p><b>Status:</b> ${application.status}</p>
 
-                <p><b>Cover Letter:</b></p>
+                    <p><b>Applied:</b> ${application.appliedDate}</p>
 
-                <p>${app.coverLetter}</p>
+                    <br>
 
-                <br>
+                    <p><b>Cover Letter</b></p>
 
-                <button class="btn btn-primary">
+                    <p>${application.coverLetter}</p>
 
-                    View Resume
+                    <br>
 
-                </button>
+                     <div style="margin-top:15px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
 
-            </div>
+                        ${getActionButtons(application)}
 
-            <br>
+                    </div>
+
+                </div>
 
             `;
 
@@ -83,8 +177,62 @@ async function loadApplications() {
 
         console.log(error);
 
+        alert("Server Error");
+
     }
 
 }
 
 loadApplications();
+
+
+async function updateStatus(applicationId, status) {
+
+    try {
+
+        const response = await fetch(
+
+            API.updateApplicationStatus +
+            "/" +
+            applicationId +
+            "/status?status=" +
+            status,
+
+            {
+
+                method: "PUT",
+
+                headers: {
+
+                    "Authorization":
+                    "Bearer " + localStorage.getItem("token")
+
+                }
+
+            }
+
+        );
+
+        if (!response.ok) {
+
+            alert("Unable to update status");
+
+            return;
+
+        }
+
+        alert("Application moved to " + status + " Successfully");
+
+        loadApplications();
+
+    }
+
+    catch (error) {
+
+        console.log(error);
+
+        alert("Server Error");
+
+    }
+
+}

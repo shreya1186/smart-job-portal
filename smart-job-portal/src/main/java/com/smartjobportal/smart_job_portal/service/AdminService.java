@@ -21,4 +21,6 @@ public interface AdminService {
     void deleteJob(Long jobId);
 
     List<ApplicationResponse> getAllApplications();
+
+    void deleteApplication(Long applicationId);
 }

@@ -11,6 +11,8 @@ public interface ApplicationService {
     ApplicationResponse applyJob(ApplicationRequest request);
 
     List<ApplicationResponse> getApplications(Long studentId);
+
+    List<ApplicationResponse> getApplicationsByJob(Long jobId);
     
     ApplicationResponse updateApplicationStatus(Long applicationId, ApplicationStatus status);
 

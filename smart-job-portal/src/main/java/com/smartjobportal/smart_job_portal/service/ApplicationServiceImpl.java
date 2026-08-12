@@ -68,6 +68,16 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
+    public List<ApplicationResponse> getApplicationsByJob(Long jobId) {
+
+        return applicationRepository.findByJobId(jobId)
+                .stream()
+                .map(this::mapToResponse)
+                .toList();
+    }
+
+
+    @Override
     public ApplicationResponse updateApplicationStatus(Long applicationId, ApplicationStatus status){
         Application application = applicationRepository.findById(applicationId)
             .orElseThrow(()->new ApplicationNotFoundException("Application not found"));

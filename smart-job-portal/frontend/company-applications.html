@@ -1,57 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+    <head>
 
-<meta charset="UTF-8">
+        <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0">
 
-<title>Applications Received</title>
+        <title>Job Applications</title>
 
-<link rel="stylesheet"
-href="css/global.css">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/dashboard.css">
 
-<link rel="stylesheet"
-href="css/dashboard.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-<header class="dashboard-header">
+        <header class="dashboard-header">
 
-<div class="container dashboard-nav">
+            <div class="container dashboard-nav">
 
-<h2>Applications Received</h2>
+                <h2>📄 Applications Received</h2>
 
-<a href="company-jobs.html"
-class="btn btn-outline">
+                <div>
 
-Back
+                    <button id="theme-btn" class="btn btn-outline">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
 
-</a>
+                    <a href="company-jobs.html"
+                    class="btn btn-outline">
 
-</div>
+                        My Jobs
 
-</header>
+                    </a>
 
-<section class="dashboard">
+                </div>
 
-<div class="container">
+            </div>
 
-<div id="applicationsContainer">
+        </header>
 
-</div>
+        <section class="dashboard">
 
-</div>
+            <div class="container">
 
-</section>
+                <div id="applicationsContainer"
+                    class="job-grid">
 
-<script src="js/api.js"></script>
+                </div>
 
-<script src="js/company-applications.js"></script>
+            </div>
+
+        </section>
+
+        <script src="js/theme.js"></script>
+        <script src="js/api.js"></script>
+        <script src="js/company-applications.js"></script>
 
 </body>
 

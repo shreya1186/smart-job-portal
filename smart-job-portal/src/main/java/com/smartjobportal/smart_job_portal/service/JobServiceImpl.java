@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.smartjobportal.smart_job_portal.dto.JobRequest;
 import com.smartjobportal.smart_job_portal.dto.JobResponse;
+import com.smartjobportal.smart_job_portal.dto.StudentJobResponse;
 import com.smartjobportal.smart_job_portal.entity.Company;
 import com.smartjobportal.smart_job_portal.entity.Job;
 import com.smartjobportal.smart_job_portal.exception.CompanyNotFoundException;
@@ -95,6 +96,14 @@ public class JobServiceImpl implements JobService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<JobResponse> getJobsByCompany(Long companyId){
+        List<Job> jobs = jobRepository.findByCompanyId(companyId);
+
+        return jobs.stream()
+                .map(this::mapToResponse)
+                .toList();
+    }
 
     @Override
     public JobResponse updateJob(Long jobId, JobRequest request) {
@@ -136,28 +145,58 @@ public class JobServiceImpl implements JobService {
 
 
     @Override
-    public List<JobResponse> searchByTitle(String title) {
+    public List<StudentJobResponse> searchByTitle(String title) {
 
         return jobRepository.findByTitleContainingIgnoreCase(title)
                 .stream()
-                .map(this::mapToResponse)
+                .map(job -> new StudentJobResponse(
+                        job.getId(),
+                        job.getTitle(),
+                        job.getDescription(),
+                        job.getSalary(),
+                        job.getLocation(),
+                        job.getExperience(),
+                        job.getSkills(),
+                        job.getDeadline(),
+                        job.getCompany().getCompanyName()
+                ))
                 .toList();
     }
 
     @Override
-    public List<JobResponse> searchByLocation(String location) {
+    public List<StudentJobResponse> searchByLocation(String location) {
 
         return jobRepository.findByLocationContainingIgnoreCase(location)
                 .stream()
-                .map(this::mapToResponse)
+                .map(job -> new StudentJobResponse(
+                        job.getId(),
+                        job.getTitle(),
+                        job.getDescription(),
+                        job.getSalary(),
+                        job.getLocation(),
+                        job.getExperience(),
+                        job.getSkills(),
+                        job.getDeadline(),
+                        job.getCompany().getCompanyName()
+                ))
                 .toList();
     }
 
     @Override
-    public Page<JobResponse> getJobsWithPagination(int page, int size) {
+    public Page<StudentJobResponse> getJobsWithPagination(int page, int size) {
 
         return jobRepository.findAll(PageRequest.of(page, size))
-                .map(this::mapToResponse);
+                .map(job -> new StudentJobResponse(
+                        job.getId(),
+                        job.getTitle(),
+                        job.getDescription(),
+                        job.getSalary(),
+                        job.getLocation(),
+                        job.getExperience(),
+                        job.getSkills(),
+                        job.getDeadline(),
+                        job.getCompany().getCompanyName()
+                ));
     }
 
     @Override
@@ -170,19 +209,59 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public List<JobResponse> searchByExperience(String experience) {
+    public List<StudentJobResponse> searchByExperience(String experience) {
         return jobRepository.findByExperienceContainingIgnoreCase(experience)
                 .stream()
-                .map(this::mapToResponse)
+                .map(job -> new StudentJobResponse(
+                        job.getId(),
+                        job.getTitle(),
+                        job.getDescription(),
+                        job.getSalary(),
+                        job.getLocation(),
+                        job.getExperience(),
+                        job.getSkills(),
+                        job.getDeadline(),
+                        job.getCompany().getCompanyName()
+                ))
                 .toList();
     }
 
     @Override
-    public List<JobResponse> searchBySkills(String skills){
+    public List<StudentJobResponse> searchBySkills(String skills){
         return jobRepository.findBySkillsContainingIgnoreCase(skills)
                 .stream()
-                .map(this::mapToResponse)
+                .map(job -> new StudentJobResponse(
+                        job.getId(),
+                        job.getTitle(),
+                        job.getDescription(),
+                        job.getSalary(),
+                        job.getLocation(),
+                        job.getExperience(),
+                        job.getSkills(),
+                        job.getDeadline(),
+                        job.getCompany().getCompanyName()
+                ))
                 .toList();   
+    }
+
+    @Override
+    public List<StudentJobResponse> getAllJobsForStudents() {
+
+        return jobRepository.findAll()
+                .stream()
+                .map(job -> new StudentJobResponse(
+                        job.getId(),
+                        job.getTitle(),
+                        job.getDescription(),
+                        job.getSalary(),
+                        job.getLocation(),
+                        job.getExperience(),
+                        job.getSkills(),
+                        job.getDeadline(),
+                        job.getCompany().getCompanyName()
+                ))
+                .toList();
+
     }
 
     private JobResponse mapToResponse(Job job) {

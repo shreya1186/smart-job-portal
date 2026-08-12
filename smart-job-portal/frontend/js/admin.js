@@ -1,4 +1,3 @@
-// const adminId = 1;
 
 async function loadAdminDashboard(){
 

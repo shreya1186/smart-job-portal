@@ -1,5 +1,8 @@
 const companyId = localStorage.getItem("companyId");
 
+console.log("Company ID:", companyId);
+console.log("API:", API.companyJobs + "/" + companyId);
+
 async function loadCompanyJobs() {
 
     try {
@@ -54,20 +57,45 @@ async function loadCompanyJobs() {
 
                 <h3>${job.title}</h3>
 
-                <p><b>Location:</b> ${job.location}</p>
+                <p><i class="fa-solid fa-location-dot"></i> <b>Location:</b> ${job.location}</p>
 
-                <p><b>Salary:</b> ₹${job.salary}</p>
+                <p><i class="fa-solid fa-indian-rupee-sign"></i> <b>Salary:</b> ₹${job.salary}</p>
 
-                <p><b>Deadline:</b> ${job.deadline}</p>
+                <p><i class="fa-solid fa-calendar-days"></i> <b>Deadline:</b> ${job.deadline}</p>
 
                 <br>
 
-                <a class="btn btn-primary"
-                   href="company-applications.html?jobId=${job.id}">
+                <br>
 
-                   View Applications
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
 
-                </a>
+                    <a class="btn btn-primary"
+                        href="company-applications.html?jobId=${job.id}">
+
+                        <i class="fa-solid fa-users"></i>
+                        View Applications
+
+                    </a>
+
+                    <button
+                        class="btn btn-outline"
+                        onclick="editJob(${job.id})">
+
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+
+                    </button>
+
+                    <button
+                        class="btn btn-danger"
+                        onclick="deleteJob(${job.id})">
+
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
+
+                    </button>
+
+                </div>
 
             </div>
 
@@ -86,3 +114,61 @@ async function loadCompanyJobs() {
 }
 
 loadCompanyJobs();
+
+
+
+function editJob(jobId) {
+
+    window.location.href =
+        "edit-job.html?jobId=" + jobId;
+
+}
+
+async function deleteJob(jobId) {
+
+    const ok = confirm("Delete this job?");
+
+    if (!ok) return;
+
+    try {
+
+        const response = await fetch(
+
+            API.deleteJob + "/" + jobId,
+
+            {
+
+                method: "DELETE",
+
+                headers: {
+
+                    "Authorization":
+                        "Bearer " + localStorage.getItem("token")
+
+                }
+
+            }
+
+        );
+
+        if (!response.ok) {
+
+            alert("Unable to delete job");
+
+            return;
+
+        }
+
+        alert("Job deleted successfully");
+
+        loadCompanyJobs();
+
+    }
+
+    catch (error) {
+
+        console.log(error);
+
+    }
+
+}

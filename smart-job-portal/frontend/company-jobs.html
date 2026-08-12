@@ -6,15 +6,15 @@
         <meta charset="UTF-8">
 
         <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+            content="width=device-width, initial-scale=1.0">
 
-        <title>Company Jobs</title>
+        <title>My Jobs</title>
+
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/dashboard.css">
 
         <link rel="stylesheet"
-        href="css/global.css">
-
-        <link rel="stylesheet"
-        href="css/dashboard.css">
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     </head>
 
@@ -22,29 +22,34 @@
 
         <header class="dashboard-header">
 
-        <div class="container dashboard-nav">
+            <div class="container dashboard-nav">
 
-        <h2>🏢 My Posted Jobs</h2>
+                <h2>💼 My Posted Jobs</h2>
 
-        <div>
+                <div>
 
-        <a href="company.html"
-        class="btn btn-outline">
+                    <button id="theme-btn" class="btn btn-outline">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
 
-        Dashboard
+                    <a href="company.html"
+                    class="btn btn-outline">
 
-        </a>
+                        Dashboard
 
-        <a href="post-job.html"
-        class="btn btn-primary">
+                    </a>
 
-        Post New Job
+                    <a href="post-job.html"
+                    class="btn btn-outline">
 
-        </a>
+                        <i class="fa-solid fa-plus"></i>
+                        Post Job
 
-        </div>
+                    </a>
 
-        </div>
+                </div>
+
+            </div>
 
         </header>
 
@@ -52,20 +57,19 @@
 
             <div class="container">
 
-            <div
-            id="companyJobsContainer"
-            class="job-grid">
+                <div id="companyJobsContainer"
+                    class="job-grid">
 
-            </div>
+                </div>
 
             </div>
 
         </section>
 
+        <script src="js/theme.js"></script>
         <script src="js/api.js"></script>
-
         <script src="js/company-jobs.js"></script>
 
-    </body>
+</body>
 
 </html>

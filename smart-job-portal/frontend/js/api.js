@@ -23,6 +23,8 @@ const API = {
 
     getAllJobs: BASE_URL + "/job/jobs",
 
+    studentJobs: BASE_URL + "/job/student/jobs",
+
     getJob: BASE_URL + "/job",
 
     createJob: BASE_URL + "/job",
@@ -43,6 +45,10 @@ const API = {
 
     sortSalary: BASE_URL + "/job/sort/salary",
 
+    companyJobs: BASE_URL + "/job/company",
+
+    companyApplications: BASE_URL + "/application/job",
+
 
     // APPLICATION
 
@@ -61,14 +67,25 @@ const API = {
 
     studentDashboard: BASE_URL + "/student/dashboard",
 
-    companyDashboard: BASE_URL + "/company/dashboard"
+    companyDashboard: BASE_URL + "/company/dashboard",
 
+    // Admin
 
-    // ===========================
-    // FUTURE APIs
-    // ===========================
-    // companyApplications
-    // adminUsers
-    // adminCompanies
-    // adminJobs
+    adminUsers: BASE_URL + "/admin/users",
+
+    adminCompanies: BASE_URL + "/admin/companies",
+
+    adminJobs: BASE_URL + "/admin/jobs",
+
+    adminApplications: BASE_URL + "/admin/applications",
+
+    deleteApplicationAdmin: BASE_URL + "/admin/application",
+
+    deleteUser: BASE_URL + "/admin/user",
+
+    deleteCompany: BASE_URL + "/admin/company",
+
+    deleteJobAdmin: BASE_URL + "/admin/job"
+
+    
 };

@@ -52,11 +52,60 @@
 
             <div class="container">
 
+                <div class="dashboard-card search-card">
+
+                    <div class="search-box">
+
+                        <select id="searchType">
+
+                            <option value="title">Job Title</option>
+                            <option value="location">Location</option>
+                            <option value="experience">Experience</option>
+                            <option value="skills">Skills</option>
+
+                        </select>
+
+                        <input
+                            type="text"
+                            id="searchValue"
+                            placeholder="Search jobs...">
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="searchJobs()">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            Search
+
+                        </button>
+
+                        <button
+                            class="btn btn-outline"
+                            onclick="loadJobs()">
+
+                            Reset
+
+                        </button>
+
+                    </div>
+
+                </div>
+
                 <div id="jobsContainer"
                 class="job-grid">
 
                 <!-- Jobs will be loaded here -->
 
+                </div>
+
+                <div
+                    id="pagination"
+                    style="
+                        display:flex;
+                        justify-content:center;
+                        gap:15px;
+                        margin-top:30px;
+                    ">
                 </div>
 
             </div>
