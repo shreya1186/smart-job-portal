@@ -12,7 +12,7 @@ function getActionButtons(application) {
                     class="btn btn-primary"
                     onclick="updateStatus(${application.id}, 'UNDER_REVIEW')">
 
-                    📄 Under Review
+                    Under Review
 
                 </button>
 
@@ -31,7 +31,7 @@ function getActionButtons(application) {
                     class="btn btn-primary"
                     onclick="updateStatus(${application.id}, 'INTERVIEW')">
 
-                    🎤 Interview
+                    Interview
 
                 </button>
 

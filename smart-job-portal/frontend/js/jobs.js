@@ -76,27 +76,27 @@ function displayJobs(jobs) {
             <h2>${job.title}</h2>
 
             <p>
-                <i class="fa-solid fa-building"></i>
+                
                 <b>Company:</b> ${job.companyName}
             </p>
 
             <p>
-                <i class="fa-solid fa-location-dot"></i>
+                
                 <b>Location:</b> ${job.location}
             </p>
 
             <p>
-                <i class="fa-solid fa-briefcase"></i>
+                
                 <b>Experience:</b> ${job.experience}
             </p>
 
             <p>
-                <i class="fa-solid fa-indian-rupee-sign"></i>
+                
                 <b>Salary:</b> ₹${job.salary}
             </p>
 
             <p>
-                <i class="fa-solid fa-calendar-days"></i>
+                
                 <b>Deadline:</b> ${job.deadline}
             </p>
 
@@ -106,7 +106,7 @@ function displayJobs(jobs) {
                     class="btn btn-primary"
                     onclick="viewJob(${job.id})">
 
-                    <i class="fa-solid fa-eye"></i>
+                    
                     View Details
 
                 </button>

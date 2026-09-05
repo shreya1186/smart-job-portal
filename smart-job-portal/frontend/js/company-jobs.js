@@ -37,7 +37,7 @@ async function loadCompanyJobs() {
 
             container.innerHTML = `
                 <div class="dashboard-card" style="text-align:center;">
-                    <h2>📋 No Jobs Posted</h2>
+                    <h2>No Jobs Posted</h2>
                     <p>You haven't posted any jobs yet.</p>
                     <br>
                     <a href="post-job.html" class="btn btn-primary">
@@ -81,7 +81,6 @@ async function loadCompanyJobs() {
                         class="btn btn-outline"
                         onclick="editJob(${job.id})">
 
-                        <i class="fa-solid fa-pen"></i>
                         Edit
 
                     </button>
@@ -90,7 +89,6 @@ async function loadCompanyJobs() {
                         class="btn btn-danger"
                         onclick="deleteJob(${job.id})">
 
-                        <i class="fa-solid fa-trash"></i>
                         Delete
 
                     </button>
