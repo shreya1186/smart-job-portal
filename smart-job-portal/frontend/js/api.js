@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://smart-job-portal-api-mau9.onrender.com";
 
 const API = {
 
