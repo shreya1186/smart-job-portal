@@ -1,138 +1,301 @@
- /* TABLET */
 
-@media (max-width:992px){
 
-    .hero-container{
+@media (max-width: 992px) {
 
-        flex-direction:column;
+    /* HERO */
 
-        text-align:center;
-
-        gap:60px;
-
+    .hero {
+        padding: 80px 0;
     }
 
-    .hero-content{
-
-        width:100%;
-
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 60px;
     }
 
-    .hero-image{
-
-        width:100%;
-
+    .hero-content {
+        width: 100%;
+        max-width: 750px;
     }
 
-    .hero-buttons{
-
-        justify-content:center;
-
+    .hero-image {
+        width: 100%;
     }
 
-    .hero-content h1{
-
-        font-size:48px;
-
+    .hero-buttons {
+        justify-content: center;
     }
 
-}
-
-
-/* MOBILE */
-
-@media (max-width:768px){
-
-    nav{
-
-        flex-direction:column;
-
-        height:auto;
-
-        padding:20px 0;
-
-        gap:20px;
-
+    .hero-content h1 {
+        font-size: 48px;
     }
 
-    .nav-links{
 
-        flex-wrap:wrap;
+    /* FEATURES */
 
-        justify-content:center;
-
-        gap:20px;
-
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .nav-actions{
 
-        flex-wrap:wrap;
+    /* JOBS */
 
-        justify-content:center;
-
+    .job-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .hero{
 
-        padding:70px 0;
+    /* FOOTER */
 
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
     }
 
-    .hero-content h1{
-
-        font-size:38px;
-
-    }
-
-    .hero-content p{
-
-        font-size:16px;
-
-    }
-
-    .hero-circle{
-
-        width:260px;
-        height:260px;
-
-    }
-
-    .hero-circle i{
-
-        font-size:120px;
-
-    }
-
-    .hero-buttons{
-
-        flex-direction:column;
-
-    }
-
-    .btn{
-
-        width:100%;
-
+    .footer-about {
+        grid-column: span 2;
     }
 
 }
 
 
-/* SMALL MOBILE */
 
-@media(max-width:480px){
 
-    .hero-content h1{
+@media (max-width: 768px) {
 
-        font-size:32px;
+  
 
+    .container {
+        width: 90%;
     }
 
-    .badge{
 
-        font-size:14px;
+    
 
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 18px 0;
+        gap: 18px;
+    }
+
+    .logo {
+        font-size: 26px;
+    }
+
+    .nav-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .nav-actions .btn {
+        padding: 11px 22px;
+    }
+
+    #theme-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+
+
+    .hero {
+        min-height: auto;
+        padding: 70px 0;
+    }
+
+    .hero-container {
+        gap: 50px;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+        line-height: 1.2;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+        margin: 25px 0;
+    }
+
+    .badge {
+        font-size: 14px;
+        padding: 9px 16px;
+        margin-bottom: 20px;
+    }
+
+    .hero-circle {
+        width: 260px;
+        height: 260px;
+    }
+
+    .hero-circle i {
+        font-size: 120px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+
+
+    .section-title {
+        margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+        font-size: 32px;
+    }
+
+    .section-title p {
+        font-size: 15px;
+    }
+
+
+
+    .features {
+        padding: 70px 0;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .feature-card {
+        padding: 30px 25px;
+    }
+
+
+
+    .latest-jobs {
+        padding: 70px 0;
+    }
+
+    .job-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .job-card {
+        padding: 25px;
+    }
+
+    .job-card .btn {
+        width: 100%;
+    }
+
+
+
+    footer {
+        margin-top: 60px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 50px 0;
+    }
+
+    .footer-about {
+        grid-column: auto;
+    }
+
+    .footer-links {
+        align-items: flex-start;
+    }
+
+}
+
+
+
+@media (max-width: 480px) {
+
+    .container {
+        width: 92%;
+    }
+
+
+    
+
+    nav {
+        gap: 15px;
+    }
+
+    .nav-actions {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .nav-actions .btn {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+
+
+    .hero {
+        padding: 55px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .badge {
+        font-size: 12px;
+        padding: 8px 14px;
+    }
+
+    .hero-circle {
+        width: 220px;
+        height: 220px;
+    }
+
+    .hero-circle i {
+        font-size: 100px;
+    }
+
+
+    .section-title h2 {
+        font-size: 26px;
+    }
+
+    .section-title p {
+        font-size: 14px;
+    }
+
+
+
+    .feature-card {
+        padding: 25px 20px;
+    }
+
+    .job-card {
+        padding: 22px;
+    }
+
+
+
+    .footer-container {
+        padding: 40px 0;
+    }
+
+    .copyright {
+        font-size: 13px;
+        padding: 18px 10px;
     }
 
 }
